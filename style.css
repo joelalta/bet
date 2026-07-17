@@ -1,0 +1,267 @@
+/*----------------------------------------
+Fonts
+----------------------------------------*/
+
+@font-face{
+    font-family:"Roobert";
+    src:url("https://static.wixstatic.com/ufonts/6325e0_f642a8a66ead44338c3bb0d689d7d3b2/woff2/file.woff2") format("woff2");
+    font-weight:300;
+    font-style:normal;
+}
+
+@font-face{
+    font-family:"Roobert";
+    src:url("https://static.wixstatic.com/ufonts/6325e0_8d831660d68249cd8cf7941aa5cba9d6/woff2/file.woff2") format("woff2");
+    font-weight:600;
+    font-style:normal;
+}
+
+/*----------------------------------------
+Design System
+----------------------------------------*/
+
+:root{
+
+    /* Fonts */
+
+    --font-primary:"Roobert", sans-serif;
+
+    /* Colours */
+
+    --colour-text:#111111;
+    --colour-muted:#6F6F6F;
+    --colour-border:#E8E8E8;
+    --colour-background:#FFFFFF;
+
+    /* Layout */
+
+    --panel-width:clamp(320px, 28vw, 420px);
+
+    /* Spacing */
+
+    --space-1:8px;
+    --space-2:16px;
+    --space-3:24px;
+    --space-4:32px;
+    --space-5:40px;
+    --space-6:48px;
+    --space-8:64px;
+
+    /* Animation */
+
+    --transition-speed:.35s;
+
+}
+
+/*----------------------------------------
+Base
+----------------------------------------*/
+
+html,
+body{
+
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+}
+
+/*----------------------------------------
+Section Toggle
+----------------------------------------*/
+#focusToggle{
+
+    position:fixed;
+
+    bottom:50px;
+    left:50px;
+
+    display:flex;
+
+    gap:20px;
+
+    z-index:100;
+
+}
+
+.focusButton{
+
+    width:150px;
+
+    cursor:pointer;
+
+    opacity:.35;
+
+    transition:
+        opacity .25s,
+        transform .25s;
+
+}
+
+.focusButton.active{
+
+    opacity:1;
+
+}
+
+.focusButton:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/*----------------------------------------
+Information Panel
+----------------------------------------*/
+
+#infoPanel{
+
+    position:fixed;
+
+    top:var(--space-4);
+    right:var(--space-4);
+    bottom:var(--space-3);
+
+    width:var(--panel-width);
+
+    padding:var(--space-5);
+
+    background:var(--colour-background);
+
+    font-family:var(--font-primary);
+    color:var(--colour-text);
+
+    border-radius:24px;
+
+    box-shadow:
+        0 12px 48px rgba(0,0,0,.12);
+
+    overflow-y:auto;
+
+    transform:translateX(calc(100% + var(--space-3)));
+    transition:transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    z-index:1000;
+
+}
+
+#infoPanel.open{
+
+    transform:translateX(0);
+
+}
+
+/*----------------------------------------
+Close Button
+----------------------------------------*/
+
+#closePanelButton{
+
+    position:absolute;
+
+    top:var(--space-3);
+    right:var(--space-3);
+
+    border:none;
+    background:none;
+
+    font-size:32px;
+    font-family:var(--font-primary);
+    font-weight:300;
+
+    cursor:pointer;
+
+}
+
+/*----------------------------------------
+Component Panels
+----------------------------------------*/
+
+.componentPanel{
+
+    display:none;
+
+}
+
+.componentPanel.active{
+
+    display:block;
+
+}
+
+/*----------------------------------------
+Typography
+----------------------------------------*/
+
+#infoPanel h1{
+
+    margin-top:var(--space-5);
+    margin-bottom:var(--space-1);
+
+    font-size:34px;
+    font-weight:600;
+
+}
+
+#infoPanel h2{
+
+    margin-bottom:var(--space-3);
+
+    font-size:18px;
+    font-weight:300;
+
+    color:var(--colour-muted);
+
+}
+
+#infoPanel p{
+
+    margin-bottom:var(--space-5);
+
+    font-size:16px;
+    font-weight:300;
+
+    line-height:1.7;
+
+}
+
+#infoPanel h3{
+
+    margin-bottom:var(--space-3);
+
+    font-size:14px;
+    font-weight:600;
+
+    text-transform:uppercase;
+    letter-spacing:1px;
+
+}
+
+/*----------------------------------------
+Specifications
+----------------------------------------*/
+
+.specRow{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:14px 0;
+
+    border-bottom:1px solid var(--colour-border);
+
+}
+
+.specRow span:first-child{
+
+    font-weight:300;
+
+}
+
+.specRow span:last-child{
+
+    font-weight:600;
+
+}
