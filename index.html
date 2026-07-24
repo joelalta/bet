@@ -16,7 +16,14 @@
     </script>
 </head>
 
-<body>
+<body class="intro-active">
+
+ <button id="introPrompt" type="button" disabled aria-live="polite">
+    <span id="introPromptText">Loading BET — 0%</span>
+    <span id="introProgressTrack" aria-hidden="true">
+        <span id="introProgressBar"></span>
+    </span>
+ </button>
 
  <div id="focusToggle">
 
@@ -31,16 +38,37 @@
         class="focusButton"
         src="LocoButton.svg"
         alt="Locomotive">
+
+    <img
+        id="chargerButton"
+        class="focusButton"
+        src="ChargingButton.svg"
+        alt="Charger">
 </div>
   <script type="module" src="script.js"></script>
-      <div id="infoPanel">
-        <button id="closePanelButton">×</button>
+      <div id="infoPanel" tabindex="0">
+        <button id="closePanelButton" type="button" aria-label="Close panel">
+            &times;
+        </button>
+
+        <nav id="panelNavigation" aria-label="Component navigation">
+            <button id="previousComponentButton" type="button" aria-label="Previous component">
+                <span aria-hidden="true">&larr;</span>
+                <span>Previous</span>
+            </button>
+            <span id="componentPosition" aria-live="polite"></span>
+            <button id="nextComponentButton" type="button" aria-label="Next component">
+                <span>Next</span>
+                <span aria-hidden="true">&rarr;</span>
+            </button>
+        </nav>
 
         <section id="airCompressorPanel" class="componentPanel">
-            <h1>Air Compressor</h1>
-            <h2>Compressed Air Supply</h2>
+            <h1>Compressed Air Supply System</h1>
+            <h2>Onboard Pneumatic Supply</h2>
             <p>
-                Placeholder description for the air compressor.
+                The compressed air supply system provides the pneumatic services
+                required by the BET and connected locomotive systems.
             </p>
 
             <h3>Specifications</h3>
@@ -52,37 +80,180 @@
 
         <section id="batteryPanel" class="componentPanel">
             <h1>Battery System</h1>
-            <h2>2.3 MWh Lithium Iron Phosphate (LFP)</h2>
+            <h2>Five Racks · 30 Battery Packs · Approximately 2.3 MWh</h2>
             <p>
-                Placeholder description for the battery system.
+                The BET battery system stores the electrical energy used to support
+                locomotive traction and auxiliary loads. This placeholder overview
+                introduces the system at a high level and can later be replaced with
+                approved engineering and marketing content.
             </p>
 
-            <h3>Specifications</h3>
+            <h3>System Overview</h3>
+
+            <p>
+                Individual battery modules are arranged into a modular rack structure
+                inside the tender enclosure. The modular layout provides a repeatable
+                mechanical and electrical architecture while allowing sections of the
+                system to be isolated, inspected and serviced. The final description
+                should explain how the installed arrangement supports practical rail
+                operation without overwhelming a non-technical viewer.
+            </p>
+
+            <p>
+                During operation, stored DC energy is delivered through the vehicle's
+                conversion equipment before reaching the locomotive power system. The
+                battery also receives energy during charging and, where applicable,
+                from regenerative operation. Future versions of this panel may include
+                a simplified animated energy-flow diagram.
+            </p>
+
+            <h3>Key Specifications</h3>
 
             <div class="specRow"><span>Capacity</span><span>2.3 MWh</span></div>
             <div class="specRow"><span>Voltage</span><span>1500 V DC</span></div>
             <div class="specRow"><span>Chemistry</span><span>LFP</span></div>
-        </section>
+            <div class="specRow"><span>Battery racks</span><span>5</span></div>
+            <div class="specRow"><span>Battery packs</span><span>30</span></div>
+            <div class="specRow"><span>Nominal module voltage</span><span>Placeholder</span></div>
+            <div class="specRow"><span>Usable energy window</span><span>Placeholder</span></div>
+            <div class="specRow"><span>Maximum charge rate</span><span>Placeholder</span></div>
+            <div class="specRow"><span>Maximum discharge rate</span><span>Placeholder</span></div>
 
-        <section id="bmsPanel" class="componentPanel">
-            <h1>Battery Management System</h1>
-            <h2>System Monitoring</h2>
+            <h3>Battery Architecture</h3>
+
             <p>
-                Placeholder description for the battery management system.
+                The system is divided into repeated battery modules monitored by the
+                Battery Management System. Modules are mechanically supported within
+                the rack and connected into the required high-voltage architecture.
+                This section will eventually describe the hierarchy from cell to
+                module, rack and complete tender system.
             </p>
 
-            <h3>Specifications</h3>
+            <p>
+                A modular architecture makes the product easier to manufacture,
+                validate and maintain. It also gives the interactive viewer a useful
+                way to explain the difference between a single representative battery
+                module and the complete installed energy-storage system.
+            </p>
 
-            <div class="specRow"><span>Specification 1</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 2</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 3</span><span>Value</span></div>
+            <div class="specRow"><span>Cell level</span><span>Monitored</span></div>
+            <div class="specRow"><span>Module level</span><span>Serviceable assembly</span></div>
+            <div class="specRow"><span>Rack level</span><span>Structural integration</span></div>
+            <div class="specRow"><span>System level</span><span>Vehicle integration</span></div>
+
+            <h3>Operational Role</h3>
+
+            <p>
+                In a typical duty cycle, the battery system supplies energy according
+                to locomotive demand while remaining within defined voltage,
+                temperature and state-of-charge limits. Control commands are
+                coordinated with the BMS and power-conversion systems to maintain safe,
+                predictable performance.
+            </p>
+
+            <p>
+                The final content may describe representative operating scenarios such
+                as departure, sustained haulage, charging, idle periods and regenerative
+                braking. A guided visual sequence could later connect each scenario to
+                the relevant equipment inside the BET.
+            </p>
+
+            <h3>Thermal Management</h3>
+
+            <p>
+                Battery temperature is managed by the Thermal Management System. Coolant
+                is distributed through the installation to keep modules within their
+                preferred operating range and to reduce temperature variation across
+                the pack. Consistent temperatures support performance, longevity and
+                reliable state estimation.
+            </p>
+
+            <div class="specRow"><span>Cooling method</span><span>Liquid cooling</span></div>
+            <div class="specRow"><span>Operating range</span><span>Placeholder</span></div>
+            <div class="specRow"><span>Temperature monitoring</span><span>Module level</span></div>
+            <div class="specRow"><span>Low-temperature strategy</span><span>Placeholder</span></div>
+
+            <h3>Monitoring and Protection</h3>
+
+            <p>
+                The BMS continuously evaluates measurements from across the battery
+                system. Typical monitored values include cell voltage, module
+                temperature, pack current, insulation status and calculated state of
+                charge. Protective logic can limit operation or isolate the system when
+                conditions move outside approved boundaries.
+            </p>
+
+            <p>
+                This placeholder section should eventually distinguish between normal
+                control actions, warnings and protective shutdowns. It can also provide
+                progressively reveal deeper BMS information within this unified Battery
+                System panel.
+            </p>
+
+            <div class="specRow"><span>Voltage monitoring</span><span>Continuous</span></div>
+            <div class="specRow"><span>Temperature monitoring</span><span>Continuous</span></div>
+            <div class="specRow"><span>Isolation monitoring</span><span>Continuous</span></div>
+            <div class="specRow"><span>Fault reporting</span><span>Vehicle network</span></div>
+
+            <h3>Safety Philosophy</h3>
+
+            <p>
+                Safety is addressed through layered mechanical, electrical, thermal and
+                control measures. The finished content should explain these layers in
+                plain language, showing how enclosure design, monitoring, contactors,
+                fusing and operating limits work together as a complete system.
+            </p>
+
+            <p>
+                Any public-facing safety claims and technical values in this section
+                must be reviewed against the final engineering documentation before
+                release. The present copy is intentionally illustrative only.
+            </p>
+
+            <h3>Inspection and Maintenance</h3>
+
+            <p>
+                Routine inspection may include reviewing diagnostic information,
+                checking electrical and cooling connections, inspecting mounting
+                hardware and confirming that the enclosure remains clean and secure.
+                Maintenance procedures must always follow the approved isolation and
+                high-voltage safety process.
+            </p>
+
+            <p>
+                Future versions of the viewer could demonstrate safe access sequences,
+                highlight service points and provide controlled links to manuals or
+                maintenance documentation. Downloads and procedures should only be
+                exposed to appropriate audiences.
+            </p>
+
+            <div class="specRow"><span>Diagnostic access</span><span>Placeholder</span></div>
+            <div class="specRow"><span>Inspection interval</span><span>Placeholder</span></div>
+            <div class="specRow"><span>Module replacement</span><span>Service procedure</span></div>
+            <div class="specRow"><span>Documentation</span><span>Future download</span></div>
+
+            <h3>Future Interactive Content</h3>
+
+            <p>
+                This panel is intended to grow beyond text. Planned possibilities
+                include module photography, simplified electrical diagrams,
+                specification comparisons, charging animations and an exploded view
+                showing how a representative module fits into the rack.
+            </p>
+
+            <p>
+                The final section can also direct users toward related subsystems such
+                as the BMS, Thermal Management System and Traction DC/DC Converters, creating a connected
+                learning experience rather than a collection of isolated descriptions.
+            </p>
         </section>
 
         <section id="controlCabinetPanel" class="componentPanel">
-            <h1>Control Cabinet</h1>
-            <h2>Vehicle Control</h2>
+            <h1>BET Control System</h1>
+            <h2>System Coordination and Vehicle Control</h2>
             <p>
-                Placeholder description for the control cabinet.
+                The BET Control System coordinates the battery, traction conversion,
+                thermal management, charging and safety systems.
             </p>
 
             <h3>Specifications</h3>
@@ -93,10 +264,11 @@
         </section>
 
         <section id="coolingPanel" class="componentPanel">
-            <h1>Cooling System</h1>
-            <h2>Thermal Management</h2>
+            <h1>Thermal Management System</h1>
+            <h2>Integrated Cooling and Temperature Control</h2>
             <p>
-                Placeholder description for the cooling system.
+                The Thermal Management System combines the cooling equipment and
+                control strategy used to maintain suitable component temperatures.
             </p>
 
             <h3>Specifications</h3>
@@ -108,23 +280,26 @@
 
         <section id="dcacPanel" class="componentPanel">
             <h1>DC/AC Converter</h1>
-            <h2>Traction Inverter</h2>
+            <h2>Traction Power Conversion</h2>
             <p>
-                Placeholder description for the DC/AC converter.
+                The DC/AC converter transforms stored DC energy from the BET
+                battery system into controlled AC power for the locomotive
+                traction system.
             </p>
 
             <h3>Specifications</h3>
 
-            <div class="specRow"><span>Specification 1</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 2</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 3</span><span>Value</span></div>
+            <div class="specRow"><span>Input</span><span>High-voltage DC</span></div>
+            <div class="specRow"><span>Output</span><span>Controlled AC</span></div>
+            <div class="specRow"><span>Application</span><span>Traction power</span></div>
         </section>
 
         <section id="dcdcPanel" class="componentPanel">
-            <h1>DC/DC Converters</h1>
-            <h2>Voltage Conversion</h2>
+            <h1>Traction DC/DC Converters</h1>
+            <h2>High-Power Traction Voltage Conversion</h2>
             <p>
-                Placeholder description for the DC/DC converter system.
+                The traction DC/DC converter system conditions battery energy for the
+                locomotive traction architecture and associated operating demands.
             </p>
 
             <h3>Specifications</h3>
@@ -135,7 +310,17 @@
         </section>
 
         <section id="driversCabPanel" class="componentPanel">
-            <h1>Drivers Cab</h1>
+            <h1>Driver's Cab</h1>
+            <h2>New In-Cab Human–Machine Interface</h2>
+            <p>
+                The new in-cab HMI gives the driver clear access to BET operating
+                status, energy information, alerts and system controls.
+            </p>
+
+            <h3>HMI Capabilities</h3>
+            <div class="specRow"><span>System status</span><span>Integrated display</span></div>
+            <div class="specRow"><span>Energy information</span><span>Live overview</span></div>
+            <div class="specRow"><span>Driver alerts</span><span>Prioritised</span></div>
         </section>
 
         <section id="bodyPanel" class="componentPanel">
@@ -146,20 +331,90 @@
             <h1>Bogie</h1>
         </section>
 
-        <section id="wagonPanel" class="componentPanel">
-            <h1>DC Link</h1>
-            <h2>High Voltage DC Interface</h2>
+        <section id="chargerPanel" class="componentPanel">
+            <h1>Charging &amp; Energy Regeneration</h1>
+            <h2>Multiple High-Power Energy Pathways</h2>
 
             <p>
-                Placeholder description for the DC Link.
+                Explore the three complementary ways energy can enter or return to the
+                BET battery system. Scrolling through this panel changes the active
+                energy pathway shown in the 3D scene.
             </p>
 
-            <h3>Specifications</h3>
+            <div class="chargingStage" data-charging-stage="rooftop">
+                <h3>1. Rooftop Charging</h3>
+                <p>
+                    The rooftop charging rail connects the BET to a purpose-built
+                    wayside charging substation for high-power, high-voltage energy
+                    transfer during planned charging windows.
+                </p>
+                <p>
+                    The overhead arrangement avoids manually handling large charging
+                    cables and provides a clear, repeatable connection point. In the
+                    viewer, the charging structure lowers into position and blue energy
+                    bands pulse through the pantograph.
+                </p>
+                <p>
+                    Final engineering content can explain connection verification,
+                    electrical isolation, charge authorisation and the control handshake
+                    between the substation and BET.
+                </p>
+                <div class="specRow"><span>Interface</span><span>Rooftop charging rail</span></div>
+                <div class="specRow"><span>Supply</span><span>High-power / high-voltage</span></div>
+                <div class="specRow"><span>Infrastructure</span><span>Purpose-built substation</span></div>
+                <div class="specRow"><span>Charge rate</span><span>Engineering value pending</span></div>
+            </div>
 
-        <div class="specRow"><span>Specification 1</span><span>Value</span></div>
-        <div class="specRow"><span>Specification 2</span><span>Value</span></div>
-        <div class="specRow"><span>Specification 3</span><span>Value</span></div>
+            <div class="chargingStage" data-charging-stage="regenerative">
+                <h3>2. Regenerative Braking</h3>
+                <p>
+                    During braking, the traction motors operate as generators. Energy
+                    from the train's motion is converted back into electrical energy,
+                    conditioned by the traction power system and returned to the BET
+                    battery system.
+                </p>
+                <p>
+                    Regeneration reduces the energy otherwise dissipated as heat and can
+                    improve overall route efficiency. The amount recovered depends on
+                    speed, train mass, route gradient, battery state of charge and the
+                    available regenerative braking capacity.
+                </p>
+                <p>
+                    When this section becomes active, the rooftop connection disengages
+                    and the blue energy animation moves to the BET wheels to represent
+                    braking energy flowing back toward storage.
+                </p>
+                <div class="specRow"><span>Energy source</span><span>Train motion</span></div>
+                <div class="specRow"><span>Conversion</span><span>Traction motors generating</span></div>
+                <div class="specRow"><span>Destination</span><span>BET battery system</span></div>
+                <div class="specRow"><span>Recovery capacity</span><span>Engineering value pending</span></div>
+            </div>
+
+            <div class="chargingStage" data-charging-stage="plugin">
+                <h3>3. Plug-In Charging Guns</h3>
+                <p>
+                    Plug-in charging guns provide a physical cable connection between
+                    external charging equipment and the BET. This supports charging in
+                    depots, workshops and other locations without rooftop infrastructure.
+                </p>
+                <p>
+                    The plug-in pathway provides operational flexibility and may support
+                    longer-duration or backup charging. Exact connector quantities,
+                    charging power and charge times remain subject to engineering approval.
+                </p>
+                <p>
+                    Entering this section stops the regenerative wheel animation and
+                    sends the charging gun into its connection beneath the BET. The
+                    flexible cable follows the handle and settles naturally after it
+                    reaches the vehicle.
+                </p>
+                <div class="specRow"><span>Interface</span><span>Plug-in charging guns</span></div>
+                <div class="specRow"><span>Typical location</span><span>Depot or workshop</span></div>
+                <div class="specRow"><span>Connector quantity</span><span>Engineering value pending</span></div>
+                <div class="specRow"><span>Charge rate</span><span>Engineering value pending</span></div>
+            </div>
         </section>
+
     </div>
 </body>
 </html>
