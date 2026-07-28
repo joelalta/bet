@@ -63,174 +63,270 @@
             </button>
         </nav>
 
-        <section id="airCompressorPanel" class="componentPanel">
+        <section id="airCompressorPanel" class="componentPanel" data-placeholder-expanded="true">
             <h1>Compressed Air Supply System</h1>
             <h2>Onboard Pneumatic Supply</h2>
             <p>
-                The compressed air supply system provides the pneumatic services
-                required by the BET and connected locomotive systems.
+                The Compressed Air Supply System generates and manages the pneumatic
+                pressure required by the BET and connected locomotive systems.
             </p>
 
-            <h3>Specifications</h3>
+            <p>
+                It allows electrically driven compressor equipment within the BET to
+                support systems that rely on a stable supply of compressed air.
+            </p>
 
-            <div class="specRow"><span>Specification 1</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 2</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 3</span><span>Value</span></div>
+            <h3>System Role</h3>
+
+            <p>
+                The compressors draw in atmospheric air, compress it and deliver it
+                into the train's pneumatic network.
+            </p>
+
+            <p>
+                Stored air can then be made available when required without the
+                compressors needing to run continuously. The system starts and stops
+                automatically to maintain pressure within an approved operating range.
+            </p>
+
+            <h3>Installed Equipment</h3>
+
+            <aside class="engineeringReview engineeringPriority">
+                <strong>Confirm the compressor assembly</strong>
+                <p>
+                    The current 3D model appears to show two compressor assemblies
+                    mounted together as one selectable system. Confirm whether both
+                    visible units are operational compressors and how they are
+                    configured.
+                </p>
+            </aside>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm whether the units operate together, alternate duty, use a
+                lead-and-standby arrangement, serve separate pneumatic circuits or
+                provide redundant capacity following a fault.
+            </p>
+
+            <h3>Key Specifications</h3>
+
+            <div class="specRow"><span>Primary function</span><span>Onboard compressed-air generation</span></div>
+            <div class="specRow engineeringReview"><span>Compressor quantity</span><span>Proposed: 2</span></div>
+            <div class="specRow engineeringReview"><span>Compressor type</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Nominal operating pressure</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Maximum pressure</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Delivered airflow</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Receiver capacity</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Electrical supply</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Duty arrangement</span><span>Engineering confirmation required</span></div>
+
+            <h3>Operating Principle</h3>
+
+            <p>
+                When system pressure falls below its lower control threshold, the
+                control system starts one or both compressors.
+            </p>
+
+            <p>
+                Air is compressed, conditioned as required and delivered to the
+                pneumatic network or storage receivers. Once the upper pressure
+                threshold is reached, compressor output can be reduced or stopped.
+            </p>
+
+            <p>
+                This automatic operating cycle maintains available pressure while
+                limiting unnecessary compressor runtime and auxiliary energy
+                consumption.
+            </p>
+
+            <h3>Pneumatic Services</h3>
+
+            <p>
+                The system may supply compressed air for train braking and other
+                pneumatic equipment associated with the BET or locomotive.
+            </p>
+
+            <aside class="engineeringReview engineeringPriority">
+                <strong>Confirm all supplied pneumatic loads</strong>
+                <p>
+                    Potential services could include braking systems, horns, pneumatic
+                    actuators, charging equipment or equipment-control functions. Do
+                    not publish this proposed list until engineering confirms it,
+                    especially any claim involving safety-critical braking equipment.
+                </p>
+            </aside>
+
+            <h3>Air Storage and Conditioning</h3>
+
+            <p>
+                Compressed-air installations can include receivers, filtration,
+                moisture separation, drying and pressure-control equipment.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm which air-storage and conditioning functions are installed
+                within the BET and which remain part of the connected locomotive or
+                train pneumatic system.
+            </p>
+
+            <h3>Control and Availability</h3>
+
+            <p>
+                Pressure status, compressor operation and system faults can be
+                communicated to the BET Control System and locomotive controls.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the pressure thresholds, compressor sequencing, runtime
+                balancing, redundancy, degraded-operation capability, alarms and
+                shutdown conditions.
+            </p>
         </section>
 
         <section id="batteryPanel" class="componentPanel">
             <h1>Battery System</h1>
-            <h2>Five Racks · 30 Battery Packs · Approximately 2.3 MWh</h2>
+            <h2>Five Racks &middot; 30 Battery Packs &middot; Approximately 2.3 MWh</h2>
             <p>
-                The BET battery system stores the electrical energy used to support
-                locomotive traction and auxiliary loads. This placeholder overview
-                introduces the system at a high level and can later be replaced with
-                approved engineering and marketing content.
+                The BET Battery System stores the electrical energy used to power
+                locomotive traction and onboard auxiliary systems. Its modular LFP
+                battery architecture combines high energy capacity with integrated
+                monitoring, thermal management and protective controls.
             </p>
 
             <h3>System Overview</h3>
 
             <p>
-                Individual battery modules are arranged into a modular rack structure
-                inside the tender enclosure. The modular layout provides a repeatable
-                mechanical and electrical architecture while allowing sections of the
-                system to be isolated, inspected and serviced. The final description
-                should explain how the installed arrangement supports practical rail
-                operation without overwhelming a non-technical viewer.
+                Thirty battery packs are distributed across five structural racks
+                within the BET. This modular arrangement supports practical
+                installation, system monitoring and service access while packaging
+                approximately 2.3 MWh of energy within the tender platform.
             </p>
 
             <p>
-                During operation, stored DC energy is delivered through the vehicle's
-                conversion equipment before reaching the locomotive power system. The
-                battery also receives energy during charging and, where applicable,
-                from regenerative operation. Future versions of this panel may include
-                a simplified animated energy-flow diagram.
+                The battery system can receive energy through rooftop charging,
+                plug-in charging and regenerative braking. During operation, stored
+                DC energy is supplied to the vehicle's power-conversion equipment
+                according to traction demand and the condition of the wider electrical
+                system.
             </p>
 
             <h3>Key Specifications</h3>
 
-            <div class="specRow"><span>Capacity</span><span>2.3 MWh</span></div>
-            <div class="specRow"><span>Voltage</span><span>1500 V DC</span></div>
-            <div class="specRow"><span>Chemistry</span><span>LFP</span></div>
+            <div class="specRow engineeringReview"><span>Nominal energy capacity</span><span>Approx. 2.3 MWh &mdash; confirm basis</span></div>
+            <div class="specRow"><span>System voltage</span><span>1,500 V DC</span></div>
+            <div class="specRow"><span>Battery chemistry</span><span>LFP</span></div>
             <div class="specRow"><span>Battery racks</span><span>5</span></div>
             <div class="specRow"><span>Battery packs</span><span>30</span></div>
-            <div class="specRow"><span>Nominal module voltage</span><span>Placeholder</span></div>
-            <div class="specRow"><span>Usable energy window</span><span>Placeholder</span></div>
-            <div class="specRow"><span>Maximum charge rate</span><span>Placeholder</span></div>
-            <div class="specRow"><span>Maximum discharge rate</span><span>Placeholder</span></div>
+            <div class="specRow"><span>Packs per rack</span><span>6</span></div>
+            <div class="specRow engineeringReview"><span>Usable energy window</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Maximum charging power</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Maximum discharge power</span><span>Engineering confirmation required</span></div>
 
             <h3>Battery Architecture</h3>
 
             <p>
-                The system is divided into repeated battery modules monitored by the
-                Battery Management System. Modules are mechanically supported within
-                the rack and connected into the required high-voltage architecture.
-                This section will eventually describe the hierarchy from cell to
-                module, rack and complete tender system.
+                Each rack contains a repeated arrangement of battery packs, creating
+                a scalable mechanical and electrical architecture. The five racks
+                operate together as a coordinated energy-storage system rather than
+                as isolated batteries.
             </p>
 
             <p>
-                A modular architecture makes the product easier to manufacture,
-                validate and maintain. It also gives the interactive viewer a useful
-                way to explain the difference between a single representative battery
-                module and the complete installed energy-storage system.
+                The Battery Management System monitors the condition of the battery
+                system and communicates operating information to the BET Control
+                System. Its role includes maintaining the batteries within approved
+                electrical and thermal limits and identifying conditions requiring
+                protective action.
             </p>
 
-            <div class="specRow"><span>Cell level</span><span>Monitored</span></div>
-            <div class="specRow"><span>Module level</span><span>Serviceable assembly</span></div>
-            <div class="specRow"><span>Rack level</span><span>Structural integration</span></div>
-            <div class="specRow"><span>System level</span><span>Vehicle integration</span></div>
+            <p class="engineeringReview engineeringNote">
+                Confirm the approved monitoring hierarchy and terminology: cell,
+                module, pack, rack and complete battery system.
+            </p>
 
             <h3>Operational Role</h3>
 
             <p>
-                In a typical duty cycle, the battery system supplies energy according
-                to locomotive demand while remaining within defined voltage,
-                temperature and state-of-charge limits. Control commands are
-                coordinated with the BMS and power-conversion systems to maintain safe,
-                predictable performance.
+                During traction, the Battery System supplies high-voltage DC energy to
+                the conversion equipment that interfaces with the locomotive. Power
+                delivery changes continuously in response to driver demand, operating
+                conditions and available battery energy.
             </p>
 
             <p>
-                The final content may describe representative operating scenarios such
-                as departure, sustained haulage, charging, idle periods and regenerative
-                braking. A guided visual sequence could later connect each scenario to
-                the relevant equipment inside the BET.
+                During regenerative braking, the energy flow reverses. Electrical
+                energy recovered by the traction system is returned to the BET and
+                stored for later use, reducing the amount of braking energy otherwise
+                dissipated as heat.
             </p>
 
             <h3>Thermal Management</h3>
 
             <p>
-                Battery temperature is managed by the Thermal Management System. Coolant
-                is distributed through the installation to keep modules within their
-                preferred operating range and to reduce temperature variation across
-                the pack. Consistent temperatures support performance, longevity and
-                reliable state estimation.
+                The battery packs are connected to the BET Thermal Management System,
+                which manages battery temperature during charging, traction operation
+                and changing ambient conditions.
             </p>
 
-            <div class="specRow"><span>Cooling method</span><span>Liquid cooling</span></div>
-            <div class="specRow"><span>Operating range</span><span>Placeholder</span></div>
-            <div class="specRow"><span>Temperature monitoring</span><span>Module level</span></div>
-            <div class="specRow"><span>Low-temperature strategy</span><span>Placeholder</span></div>
+            <p>
+                Maintaining a suitable and consistent temperature supports battery
+                performance, charging capability, service life and system protection.
+            </p>
+
+            <div class="specRow engineeringReview"><span>Cooling architecture</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Operating-temperature range</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Temperature monitoring level</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Low-temperature conditioning</span><span>Engineering confirmation required</span></div>
 
             <h3>Monitoring and Protection</h3>
 
             <p>
-                The BMS continuously evaluates measurements from across the battery
-                system. Typical monitored values include cell voltage, module
-                temperature, pack current, insulation status and calculated state of
-                charge. Protective logic can limit operation or isolate the system when
-                conditions move outside approved boundaries.
+                The Battery Management System continuously evaluates battery
+                measurements and communicates status, limits and fault information to
+                the vehicle control system.
             </p>
 
             <p>
-                This placeholder section should eventually distinguish between normal
-                control actions, warnings and protective shutdowns. It can also provide
-                progressively reveal deeper BMS information within this unified Battery
-                System panel.
+                Protective responses may include limiting charging or discharge power,
+                isolating affected equipment or initiating a controlled system
+                shutdown.
             </p>
 
-            <div class="specRow"><span>Voltage monitoring</span><span>Continuous</span></div>
-            <div class="specRow"><span>Temperature monitoring</span><span>Continuous</span></div>
-            <div class="specRow"><span>Isolation monitoring</span><span>Continuous</span></div>
-            <div class="specRow"><span>Fault reporting</span><span>Vehicle network</span></div>
+            <p class="engineeringReview engineeringNote">
+                Confirm monitored values, isolation-monitoring arrangements, fault
+                reporting, protection stages and the approved shutdown sequence.
+            </p>
 
             <h3>Safety Philosophy</h3>
 
             <p>
-                Safety is addressed through layered mechanical, electrical, thermal and
-                control measures. The finished content should explain these layers in
-                plain language, showing how enclosure design, monitoring, contactors,
-                fusing and operating limits work together as a complete system.
+                Battery safety is supported through coordinated mechanical,
+                electrical, thermal and control measures designed to prevent,
+                identify and respond to abnormal operating conditions.
             </p>
 
-            <p>
-                Any public-facing safety claims and technical values in this section
-                must be reviewed against the final engineering documentation before
-                release. The present copy is intentionally illustrative only.
+            <p class="engineeringReview engineeringNote">
+                Confirm the approved description of enclosure protection, contactors,
+                fusing, electrical isolation and interaction with the Fire Detection
+                and Suppression System.
             </p>
 
             <h3>Inspection and Maintenance</h3>
 
             <p>
-                Routine inspection may include reviewing diagnostic information,
-                checking electrical and cooling connections, inspecting mounting
-                hardware and confirming that the enclosure remains clean and secure.
-                Maintenance procedures must always follow the approved isolation and
-                high-voltage safety process.
+                The modular rack arrangement provides defined access to battery packs,
+                electrical connections, cooling interfaces and monitoring equipment.
             </p>
 
             <p>
-                Future versions of the viewer could demonstrate safe access sequences,
-                highlight service points and provide controlled links to manuals or
-                maintenance documentation. Downloads and procedures should only be
-                exposed to appropriate audiences.
+                Routine maintenance is expected to focus on system diagnostics,
+                connector condition, coolant interfaces, mounting hardware, isolation
+                integrity and signs of physical or thermal damage.
             </p>
 
-            <div class="specRow"><span>Diagnostic access</span><span>Placeholder</span></div>
-            <div class="specRow"><span>Inspection interval</span><span>Placeholder</span></div>
-            <div class="specRow"><span>Module replacement</span><span>Service procedure</span></div>
-            <div class="specRow"><span>Documentation</span><span>Future download</span></div>
+            <div class="specRow engineeringReview"><span>Diagnostic access</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Inspection interval</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Replacement terminology</span><span>Confirm pack/module procedure</span></div>
+            <div class="specRow engineeringReview"><span>Isolation procedure</span><span>Engineering confirmation required</span></div>
 
             <h3>Future Interactive Content</h3>
 
@@ -248,87 +344,693 @@
             </p>
         </section>
 
-        <section id="controlCabinetPanel" class="componentPanel">
+        <section id="controlCabinetPanel" class="componentPanel" data-placeholder-expanded="true">
             <h1>BET Control System</h1>
-            <h2>System Coordination and Vehicle Control</h2>
+            <h2>Tender-Side System Coordination</h2>
             <p>
-                The BET Control System coordinates the battery, traction conversion,
-                thermal management, charging and safety systems.
+                The BET Control System coordinates the battery, power-conversion,
+                charging, thermal-management and auxiliary systems installed within
+                the tender.
             </p>
 
-            <h3>Specifications</h3>
+            <p>
+                It allows these individual subsystems to operate together as one
+                integrated energy and power platform.
+            </p>
 
-            <div class="specRow"><span>Specification 1</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 2</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 3</span><span>Value</span></div>
+            <h3>System Coordination</h3>
+
+            <p>
+                The control system monitors BET availability and coordinates
+                operation according to the current vehicle state.
+            </p>
+
+            <p>
+                During traction, it balances locomotive power demand against the
+                energy and power available from the Battery System. During
+                regenerative braking, it coordinates whether recovered energy can be
+                accepted by the batteries.
+            </p>
+
+            <p>
+                During charging, it verifies system readiness and coordinates the
+                battery, charging equipment and applicable safety interlocks.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the division of responsibility between the BET Control
+                System, Battery Management System, charging controller and individual
+                subsystem controllers.
+            </p>
+
+            <h3>Locomotive Interface</h3>
+
+            <p>
+                The BET Control System exchanges operating signals with the connected
+                locomotive.
+            </p>
+
+            <p>
+                This signal-based interface allows the battery tender to respond to
+                traction and regenerative-braking demand from the existing locomotive
+                platform.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the exact signals, communication method and division of
+                control between the BET and locomotive.
+            </p>
+
+            <h3>Operating States and Faults</h3>
+
+            <p>
+                The control system manages transitions between operating states such
+                as standby, ready, traction, regenerative braking, charging,
+                reduced-power operation and controlled shutdown.
+            </p>
+
+            <p>
+                If a subsystem reports an abnormal condition, the BET Control System
+                coordinates the wider response. This may include limiting power,
+                isolating equipment or moving the tender into a safe operating state.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the approved operating-state names, transition sequence,
+                degraded operating modes and fault-response hierarchy.
+            </p>
+
+            <h3>Physical Control Cabinet</h3>
+
+            <p>
+                The selectable 3D component represents the physical cabinet associated
+                with the BET Control System.
+            </p>
+
+            <p>
+                It may contain controllers, communication hardware, input/output
+                modules, relays and supporting low-voltage equipment.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the cabinet's internal equipment and the preferred public
+                description of its role.
+            </p>
+
+            <h3>Key Specifications</h3>
+
+            <div class="specRow"><span>Primary function</span><span>BET supervisory coordination</span></div>
+            <div class="specRow"><span>Physical installation</span><span>Control cabinet</span></div>
+            <div class="specRow"><span>Locomotive communication</span><span>Signal-based interface</span></div>
+            <div class="specRow engineeringReview"><span>Controlled subsystems</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Controller architecture</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Communication protocols</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Fault-response hierarchy</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Controller redundancy</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Event and fault logging</span><span>Engineering confirmation required</span></div>
         </section>
 
-        <section id="coolingPanel" class="componentPanel">
+        <section id="coolingPanel" class="componentPanel" data-placeholder-expanded="true">
             <h1>Thermal Management System</h1>
             <h2>Integrated Cooling and Temperature Control</h2>
             <p>
-                The Thermal Management System combines the cooling equipment and
-                control strategy used to maintain suitable component temperatures.
+                The Thermal Management System maintains suitable operating
+                temperatures across the BET's principal electrical and energy-storage
+                equipment.
             </p>
 
-            <h3>Specifications</h3>
+            <p>
+                It removes heat generated during traction, charging and regenerative
+                operation while helping the system remain within approved operating
+                limits as ambient conditions change.
+            </p>
 
-            <div class="specRow"><span>Specification 1</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 2</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 3</span><span>Value</span></div>
+            <h3>Why Temperature Control Matters</h3>
+
+            <p>
+                Battery performance, charging capability and equipment life are all
+                affected by temperature. The Thermal Management System helps maintain
+                consistent conditions across the battery installation and
+                power-conversion equipment.
+            </p>
+
+            <p>
+                This supports predictable performance and reduces temperature
+                differences between components operating under different loads.
+            </p>
+
+            <h3>System Architecture</h3>
+
+            <p>
+                The system combines coolant circulation, heat exchange, airflow
+                equipment, sensors and control functions into a coordinated
+                thermal-management architecture.
+            </p>
+
+            <p>
+                Where liquid cooling is used, coolant absorbs heat from connected
+                equipment and transports it to the cooling assemblies, where that heat
+                can be transferred to the surrounding air.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                The current 3D model shows five repeated cooling assemblies. Confirm
+                whether these represent complete cooling units, heat exchangers or
+                another repeated subassembly.
+            </p>
+
+            <h3>Key Specifications</h3>
+
+            <div class="specRow"><span>Primary function</span><span>Cooling and temperature control</span></div>
+            <div class="specRow engineeringReview"><span>Principal loads</span><span>Proposed: battery and power conversion</span></div>
+            <div class="specRow engineeringReview"><span>Cooling method</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Installed cooling units</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Coolant type</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Coolant circuits</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Heat-rejection capacity</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Operating-temperature range</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Low-temperature conditioning</span><span>Engineering confirmation required</span></div>
+
+            <h3>Operating Modes</h3>
+
+            <p>
+                During traction, the system removes heat generated as the battery and
+                conversion equipment deliver high electrical power. During charging,
+                it manages heat produced as energy is transferred into the battery
+                system.
+            </p>
+
+            <p>
+                During idle or low-load operation, cooling output may be reduced to
+                avoid unnecessary auxiliary energy consumption.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm whether cooling is continuously variable, staged or
+                independently controlled across multiple circuits. Also confirm any
+                heating or battery-preconditioning modes.
+            </p>
+
+            <h3>Connected Equipment</h3>
+
+            <p>
+                The battery packs and high-power conversion equipment generate
+                different amounts of heat under different operating conditions. The
+                Thermal Management System coordinates heat removal across these loads.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm every connected component and whether the battery, Traction
+                DC/DC Converters and other power electronics use shared or physically
+                separate coolant circuits.
+            </p>
+
+            <h3>Monitoring and Fault Detection</h3>
+
+            <p>
+                The Thermal Management System monitors operating conditions throughout
+                the cooling installation and reports its status to the BET Control
+                System.
+            </p>
+
+            <p>
+                When conditions move outside approved limits, the system can issue
+                warnings and request that affected electrical equipment reduce power
+                or shut down.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm temperature-sensor locations, coolant-flow monitoring,
+                pressure monitoring, coolant-level monitoring, leak detection, pump
+                and fan fault detection, alarm thresholds and automatic derating
+                behaviour.
+            </p>
+
+            <h3>Fire Detection and Suppression</h3>
+
+            <aside class="systemSeparationReview">
+                <strong>Proposed future standalone panel</strong>
+                <p>
+                    Fire Detection and Suppression is included here temporarily for
+                    engineering review. It should become its own selectable component
+                    and information panel once the system scope and representative
+                    geometry are confirmed.
+                </p>
+            </aside>
+
+            <p>
+                The Fire Detection and Suppression System is intended to identify and
+                respond to abnormal thermal events within the BET. It may coordinate
+                alarms, electrical isolation and suppression actions with the wider
+                vehicle control architecture.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm detection technology, monitored zones, suppression medium,
+                activation logic, manual controls, electrical-isolation response,
+                external alarms and the relationship between fire detection and the
+                Thermal Management System.
+            </p>
         </section>
 
-        <section id="dcacPanel" class="componentPanel">
+        <section id="dcacPanel" class="componentPanel" data-placeholder-expanded="true">
             <h1>DC/AC Converter</h1>
-            <h2>Traction Power Conversion</h2>
+            <h2>Onboard AC Power Conversion</h2>
+
+            <aside class="engineeringReview engineeringPriority">
+                <strong>Priority engineering confirmation</strong>
+                <p>
+                    “DC/AC Converter” is the name shown on the current drawings and
+                    may be translated supplier terminology. Confirm the preferred
+                    English name, whether this equipment belongs to the Auxiliary
+                    Power System, and exactly which loads it supplies.
+                </p>
+            </aside>
+
             <p>
-                The DC/AC converter transforms stored DC energy from the BET
-                battery system into controlled AC power for the locomotive
-                traction system.
+                The DC/AC Converter transforms high-voltage DC energy from the BET
+                Battery System into a controlled AC electrical supply. This allows
+                equipment requiring AC power to operate from the BET's DC
+                energy-storage architecture.
             </p>
 
-            <h3>Specifications</h3>
+            <h3>System Role</h3>
 
+            <p>
+                The battery system stores and distributes energy as high-voltage DC.
+                Equipment requiring an AC supply therefore needs a conversion stage
+                between it and the battery system.
+            </p>
+
+            <p>
+                The DC/AC Converter provides this electrical interface, producing AC
+                power for the connected equipment.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm whether the output has fixed or variable voltage and frequency
+                before describing it as a regulated auxiliary supply.
+            </p>
+
+            <h3>Key Specifications</h3>
+
+            <div class="specRow"><span>Converter arrangement</span><span>Single assembly</span></div>
             <div class="specRow"><span>Input</span><span>High-voltage DC</span></div>
             <div class="specRow"><span>Output</span><span>Controlled AC</span></div>
-            <div class="specRow"><span>Application</span><span>Traction power</span></div>
+            <div class="specRow engineeringReview"><span>Preferred component name</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Primary application</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Supplied equipment</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Input-voltage range</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Output voltage</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Output frequency</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Phase configuration</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Continuous power</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Peak power</span><span>Engineering confirmation required</span></div>
+
+            <h3>Operating Principle</h3>
+
+            <p>
+                The converter uses power electronics to switch the incoming DC supply
+                and create a controlled AC waveform. Its control system adjusts the
+                output according to the requirements of the connected loads and the
+                available battery supply.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm whether output filtering, galvanic isolation or variable-speed
+                motor control forms part of this converter assembly.
+            </p>
+
+            <h3>Potential Auxiliary Power Role</h3>
+
+            <p>
+                This converter may form part of the BET Auxiliary Power System,
+                supplying equipment that cannot operate directly from the high-voltage
+                DC bus.
+            </p>
+
+            <aside class="engineeringReview engineeringPriority">
+                <strong>Do not publish the proposed load list without confirmation</strong>
+                <p>
+                    Potential loads could include pumps, fans, compressors, cooling
+                    equipment or other onboard services. Engineering must identify the
+                    actual downstream equipment.
+                </p>
+            </aside>
+
+            <h3>System Coordination</h3>
+
+            <p>
+                The converter operates as part of the wider BET electrical
+                architecture. Its availability, operating state and fault information
+                can be communicated to the BET Control System.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the control interface, start-up and shutdown sequence,
+                electrical isolation arrangement, fault reporting and whether this
+                converter has any connection to traction power.
+            </p>
         </section>
 
-        <section id="dcdcPanel" class="componentPanel">
+        <section id="dcdcPanel" class="componentPanel" data-placeholder-expanded="true">
             <h1>Traction DC/DC Converters</h1>
             <h2>High-Power Traction Voltage Conversion</h2>
             <p>
-                The traction DC/DC converter system conditions battery energy for the
-                locomotive traction architecture and associated operating demands.
+                The Traction DC/DC Converter System manages the transfer of
+                high-voltage DC energy between the BET Battery System and the
+                locomotive traction architecture. It regulates the electrical
+                interface so traction power can be delivered in a controlled and
+                predictable manner.
             </p>
 
-            <h3>Specifications</h3>
+            <h3>System Overview</h3>
 
-            <div class="specRow"><span>Specification 1</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 2</span><span>Value</span></div>
-            <div class="specRow"><span>Specification 3</span><span>Value</span></div>
+            <p>
+                Five converter assemblies are installed within the BET, forming the
+                high-power conversion stage between the battery system and the
+                locomotive.
+            </p>
+
+            <p>
+                Battery voltage changes with state of charge, temperature and
+                operating load. The converters condition this variable electrical
+                supply to meet the requirements of the connected traction equipment.
+            </p>
+
+            <h3>Key Specifications</h3>
+
+            <div class="specRow"><span>Converter assemblies</span><span>5</span></div>
+            <div class="specRow"><span>Energy source</span><span>BET Battery System</span></div>
+            <div class="specRow"><span>Input</span><span>High-voltage DC</span></div>
+            <div class="specRow"><span>Output</span><span>Regulated high-voltage DC</span></div>
+            <div class="specRow engineeringReview"><span>Input-voltage range</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Output-voltage range</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Continuous system power</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Peak system power</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Power-flow direction</span><span>Engineering confirmation required</span></div>
+
+            <h3>Operating Principle</h3>
+
+            <p>
+                During traction, the converters respond to locomotive power demand
+                and regulate energy flowing from the battery system toward the
+                locomotive.
+            </p>
+
+            <p>
+                This conversion stage allows the battery and locomotive power systems
+                to operate across their respective voltage ranges while remaining
+                coordinated by the BET control architecture. The converters can adjust
+                power transfer as driver demand, battery condition and system limits
+                change.
+            </p>
+
+            <h3>Five-Converter Architecture</h3>
+
+            <p>
+                Using five converter assemblies distributes the conversion function
+                across repeated equipment units. This provides a practical way to
+                package the required conversion capacity within the BET.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm whether the converters operate in parallel, serve separate
+                traction channels, share power dynamically, can be isolated
+                individually or provide operational redundancy.
+            </p>
+
+            <h3>Regenerative Energy Flow</h3>
+
+            <p>
+                During regenerative braking, electrical energy recovered by the
+                locomotive is returned toward the BET Battery System.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm whether the Traction DC/DC Converters directly handle reverse
+                energy flow and regulate recovered energy before it reaches the
+                batteries.
+            </p>
+
+            <h3>System Coordination</h3>
+
+            <p>
+                Converter operation is coordinated with the BET Control System,
+                Battery Management System and locomotive controls.
+            </p>
+
+            <p>
+                The system balances requested traction power against available battery
+                energy and active operating limits. Converter output can then be
+                increased, reduced or interrupted as system conditions change.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the correct public terminology for the locomotive electrical
+                interface, power-sharing strategy, isolation capability and any
+                degraded-operation modes.
+            </p>
         </section>
 
-        <section id="driversCabPanel" class="componentPanel">
+        <section id="driversCabPanel" class="componentPanel" data-placeholder-expanded="true">
             <h1>Driver's Cab</h1>
-            <h2>New In-Cab Human–Machine Interface</h2>
+            <h2>Integrated Battery-Electric HMI</h2>
             <p>
-                The new in-cab HMI gives the driver clear access to BET operating
-                status, energy information, alerts and system controls.
+                A new in-cab Human&ndash;Machine Interface gives the driver access to
+                BET operating information without requiring direct interaction with
+                equipment inside the tender.
+            </p>
+
+            <p>
+                It provides a clear link between the driver, locomotive and modern
+                battery-electric system.
+            </p>
+
+            <h3>Driver Information</h3>
+
+            <p>
+                The HMI can present BET readiness, battery state of charge, available
+                traction power, regenerative-braking availability, charging status,
+                active limitations, warnings and faults.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the complete set of driver-visible values, status indicators
+                and terminology used on the production HMI.
+            </p>
+
+            <h3>Operating Awareness</h3>
+
+            <p>
+                The HMI helps the driver understand not only whether the BET is
+                operating, but how much power is currently available and whether any
+                limitations are active.
+            </p>
+
+            <p>
+                Clear presentation is particularly important because the driver is
+                operating an established locomotive platform connected to a new
+                battery-energy system.
+            </p>
+
+            <h3>Driver Interaction</h3>
+
+            <p>
+                Depending on the final control philosophy, the HMI may allow the
+                driver to enable BET operation, acknowledge warnings, review system
+                status, confirm operating modes or monitor charging.
+            </p>
+
+            <aside class="engineeringReview engineeringPriority">
+                <strong>Confirm driver control authority</strong>
+                <p>
+                    Identify which HMI functions are informational and which permit
+                    direct driver control of the BET.
+                </p>
+            </aside>
+
+            <h3>Alerts and Priorities</h3>
+
+            <p>
+                The HMI may distinguish between informational messages,
+                reduced-performance conditions, action-required warnings and critical
+                shutdown events.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the approved alert hierarchy, wording, colours,
+                acknowledgement behaviour and relationship to the locomotive's
+                existing warning systems.
             </p>
 
             <h3>HMI Capabilities</h3>
+
             <div class="specRow"><span>System status</span><span>Integrated display</span></div>
             <div class="specRow"><span>Energy information</span><span>Live overview</span></div>
             <div class="specRow"><span>Driver alerts</span><span>Prioritised</span></div>
+            <div class="specRow engineeringReview"><span>Driver commands</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Display hardware</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Control method</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Existing-cab integration</span><span>Engineering confirmation required</span></div>
         </section>
 
-        <section id="bodyPanel" class="componentPanel">
+        <section id="bodyPanel" class="componentPanel" data-placeholder-expanded="true">
             <h1>Locomotive Body</h1>
+            <h2>Legacy Locomotive, Modern Battery Power</h2>
+
+            <p>
+                The locomotive represents the existing rail platform connected to the
+                Battery Electric Tender.
+            </p>
+
+            <p>
+                The BET introduces modern battery and power-conversion technology into
+                an established locomotive platform, providing a practical pathway
+                toward lower-emission rail operation.
+            </p>
+
+            <h3>Legacy-to-Modern Integration</h3>
+
+            <p>
+                The project integrates the BET with an Aurizon 2300 Class locomotive.
+                Rather than replacing the complete locomotive, a signal-based
+                interface coordinates the modern battery tender with the locomotive's
+                existing traction and vehicle-control equipment.
+            </p>
+
+            <p>
+                This approach allows new energy technology to be introduced while
+                retaining much of the established locomotive platform.
+            </p>
+
+            <aside class="engineeringReview engineeringPriority">
+                <strong>Confirm public project details</strong>
+                <p>
+                    Confirm that the Aurizon 2300 Class name, retrofit description and
+                    scope of retained locomotive equipment are approved for public use.
+                </p>
+            </aside>
+
+            <h3>Physical Integration</h3>
+
+            <p>
+                The BET is mechanically coupled to the locomotive and connected
+                through the interfaces required for power transfer, vehicle
+                communication and supporting services.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the electrical, pneumatic, communications and auxiliary
+                connections between the BET and locomotive.
+            </p>
+
+            <h3>Battery-to-Traction Power</h3>
+
+            <p>
+                Energy stored within the BET is conditioned by the tender's
+                power-conversion equipment before being transferred to the locomotive
+                traction system.
+            </p>
+
+            <p>
+                The locomotive then converts that electrical supply into the tractive
+                effort required to move the train.
+            </p>
+
+            <h3>Project Information</h3>
+
+            <div class="specRow"><span>Locomotive platform</span><span>Aurizon 2300 Class</span></div>
+            <div class="specRow"><span>Integration approach</span><span>Battery-tender retrofit</span></div>
+            <div class="specRow"><span>Communication</span><span>Signal-based interface</span></div>
+            <div class="specRow"><span>Energy source</span><span>BET Battery System</span></div>
+            <div class="specRow engineeringReview"><span>Battery capacity</span><span>Confirm 2.2 or approx. 2.3 MWh</span></div>
+            <div class="specRow engineeringReview"><span>Power interface</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Original systems retained</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Locomotive modifications</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Other onboard energy source</span><span>Engineering confirmation required</span></div>
         </section>
 
-        <section id="bogiePanel" class="componentPanel">
-            <h1>Bogie</h1>
+        <section id="bogiePanel" class="componentPanel" data-placeholder-expanded="true">
+            <h1>Bogie and Traction System</h1>
+            <h2>Converting Electrical Power into Tractive Effort</h2>
+
+            <p>
+                The locomotive bogies support the vehicle, guide it along the track
+                and provide the mechanical interface through which traction and
+                braking forces reach the rails.
+            </p>
+
+            <p>
+                Where traction motors are mounted within the bogies, they convert
+                electrical power supplied through the locomotive into wheel rotation.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm that the selected 3D component includes the complete bogie and
+                traction-motor assembly before using this combined panel title.
+            </p>
+
+            <h3>Traction Power</h3>
+
+            <p>
+                During acceleration and haulage, electrical energy from the BET is
+                transferred through the locomotive's traction equipment to the
+                traction motors.
+            </p>
+
+            <p>
+                The motors apply torque through the drivetrain to the wheelsets,
+                producing the tractive effort required to move the train.
+            </p>
+
+            <h3>Adhesion</h3>
+
+            <p>
+                The amount of usable traction depends on adhesion between the wheels
+                and rails. The locomotive control system manages motor torque to reduce
+                wheel slip and make effective use of the available battery power.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm the wheel-slip and adhesion-control arrangement and whether
+                BET operation changes the existing locomotive strategy.
+            </p>
+
+            <h3>Regenerative Braking</h3>
+
+            <p>
+                During regenerative braking, the traction motors operate as
+                generators. Energy from the train's motion is converted back into
+                electrical energy and returned through the traction system toward the
+                BET Battery System.
+            </p>
+
+            <p class="engineeringReview engineeringNote">
+                Confirm regenerative-braking capacity, the blended-braking strategy
+                and how the locomotive responds when the battery cannot accept all
+                available recovered energy.
+            </p>
+
+            <h3>Bogie Functions</h3>
+
+            <p>
+                The bogies support locomotive mass, guide the vehicle through curves,
+                transfer traction and braking forces, accommodate suspension movement
+                and maintain wheel-to-rail contact.
+            </p>
+
+            <h3>Key Specifications</h3>
+
+            <div class="specRow"><span>Primary function</span><span>Support, guidance, traction and braking</span></div>
+            <div class="specRow engineeringReview"><span>Powered axles</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Traction-motor arrangement</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Motor type</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Gear-drive arrangement</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Traction power</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Maximum tractive effort</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Regenerative braking</span><span>Engineering confirmation required</span></div>
+            <div class="specRow engineeringReview"><span>Mechanical braking</span><span>Engineering confirmation required</span></div>
         </section>
 
         <section id="chargerPanel" class="componentPanel">
