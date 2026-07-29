@@ -257,9 +257,6 @@ Information Panel
     width:var(--panel-width);
     box-sizing:border-box;
 
-    padding:var(--space-5);
-    padding-bottom:calc(var(--space-8) + var(--space-5));
-
     background:var(--colour-background);
 
     font-family:var(--font-primary);
@@ -270,9 +267,8 @@ Information Panel
     box-shadow:
         0 12px 48px rgba(0,0,0,.12);
 
-    overflow-y:auto;
+    overflow:hidden;
     overscroll-behavior:contain;
-    scrollbar-gutter:auto;
 
     transform:translateX(calc(100% + var(--space-3)));
     transition:transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -302,27 +298,35 @@ canvas{
 
 }
 
-#infoPanel{
+#panelScrollContent{
 
+    position:absolute;
+    inset:0;
+    box-sizing:border-box;
+    padding:var(--space-5);
+    padding-bottom:calc(var(--space-8) + var(--space-5));
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    scrollbar-gutter:auto;
     scrollbar-width:thin;
     scrollbar-color:#C8C8C8 transparent;
 
 }
 
-#infoPanel::-webkit-scrollbar{
+#panelScrollContent::-webkit-scrollbar{
 
     width:8px;
     background:transparent;
 
 }
 
-#infoPanel::-webkit-scrollbar-track{
+#panelScrollContent::-webkit-scrollbar-track{
 
     background:transparent;
 
 }
 
-#infoPanel::-webkit-scrollbar-thumb{
+#panelScrollContent::-webkit-scrollbar-thumb{
 
     background:#C8C8C8;
     border-radius:999px;
@@ -335,9 +339,9 @@ Close Button
 
 #closePanelButton{
 
-    position:sticky;
-
-    top:0;
+    position:absolute;
+    top:var(--space-5);
+    right:var(--space-5);
 
     display:flex;
     align-items:center;
@@ -345,8 +349,7 @@ Close Button
 
     width:44px;
     height:44px;
-    margin-left:auto;
-    margin-bottom:calc(var(--space-5) * -1);
+    margin:0;
 
     border:none;
     border-radius:50%;
@@ -389,6 +392,7 @@ Close Button
 #panelNavigation{
 
     position:absolute;
+    bottom:24px;
     left:var(--space-5);
     right:var(--space-5);
 
@@ -716,6 +720,10 @@ Specifications
         bottom:16px;
 
         width:clamp(340px, 31vw, 460px);
+    }
+
+    #panelScrollContent{
+
         padding:30px;
         padding-bottom:104px;
 
@@ -723,9 +731,10 @@ Specifications
 
     #closePanelButton{
 
+        top:30px;
+        right:30px;
         width:40px;
         height:40px;
-        margin-bottom:-32px;
         font-size:28px;
 
     }
@@ -869,7 +878,7 @@ Mobile product viewer
     }
 
     canvas,
-    #infoPanel{
+    #panelScrollContent{
 
         touch-action:pan-y;
 
@@ -886,9 +895,6 @@ Mobile product viewer
         height:56dvh;
         max-height:720px;
 
-        padding:var(--space-2) var(--space-3);
-        padding-bottom:calc(var(--space-8) + var(--space-5));
-
         border-radius:28px 28px 0 0;
 
         transform:translateY(calc(100% + 16px));
@@ -899,6 +905,13 @@ Mobile product viewer
     #infoPanel.open{
 
         transform:translateY(0);
+
+    }
+
+    #panelScrollContent{
+
+        padding:var(--space-2) var(--space-3);
+        padding-bottom:calc(var(--space-8) + var(--space-5));
 
     }
 
@@ -957,6 +970,8 @@ Mobile product viewer
 
     #closePanelButton{
 
+        top:var(--space-2);
+        right:var(--space-3);
         width:48px;
         height:48px;
 
@@ -964,14 +979,11 @@ Mobile product viewer
 
     #panelNavigation{
 
-        position:fixed;
-        top:auto !important;
+        position:absolute;
         bottom:12px;
         left:var(--space-3);
         right:var(--space-3);
         gap:12px;
-        transform:translateZ(0);
-        will-change:transform;
 
     }
 

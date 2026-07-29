@@ -82,23 +82,6 @@ addPlaceholderContent();
 let lastChargingStage = null;
 let navigationUnlockTimer = null;
 
-function pinPanelNavigation(infoPanel) {
-  const navigation = document.getElementById("panelNavigation");
-  if (navigation.hidden) return;
-
-  if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) {
-    navigation.style.removeProperty("top");
-    return;
-  }
-
-  navigation.style.top = `${
-    infoPanel.scrollTop +
-    infoPanel.clientHeight -
-    navigation.offsetHeight -
-    24
-  }px`;
-}
-
 function dispatchChargingStage(infoPanel, force = false) {
   const stages = Array.from(
     document.querySelectorAll("#chargerPanel.active [data-charging-stage]")
@@ -131,14 +114,14 @@ export function openPanel(component) {
   activePanel.classList.add("active");
 
   const infoPanel = document.getElementById("infoPanel");
-  infoPanel.scrollTop = 0;
+  const panelScrollContent = document.getElementById("panelScrollContent");
+  panelScrollContent.scrollTop = 0;
   infoPanel.classList.add("open");
   infoPanel.focus({ preventScroll: true });
   document.getElementById("panelNavigation").hidden = component === "charger";
-  pinPanelNavigation(infoPanel);
 
   if (component === "charger") {
-    dispatchChargingStage(infoPanel, true);
+    dispatchChargingStage(panelScrollContent, true);
   }
 }
 
@@ -192,8 +175,7 @@ document.getElementById("infoPanel").addEventListener("click", (event) => {
   event.stopPropagation();
 });
 
-document.getElementById("infoPanel").addEventListener("scroll", (event) => {
-  pinPanelNavigation(event.currentTarget);
+document.getElementById("panelScrollContent").addEventListener("scroll", (event) => {
   dispatchChargingStage(event.currentTarget);
   document.dispatchEvent(new CustomEvent("inspectionScrollChanged", {
     detail: { scrollTop: event.currentTarget.scrollTop },
@@ -206,6 +188,7 @@ document.getElementById("infoPanel").addEventListener("scroll", (event) => {
 document.addEventListener("wheel", (event) => {
   const infoPanel = document.getElementById("infoPanel");
   if (!infoPanel.classList.contains("open") || event.ctrlKey) return;
+  const panelScrollContent = document.getElementById("panelScrollContent");
 
   event.preventDefault();
 
@@ -213,13 +196,8 @@ document.addEventListener("wheel", (event) => {
   if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
     scrollAmount *= 18;
   } else if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
-    scrollAmount *= infoPanel.clientHeight;
+    scrollAmount *= panelScrollContent.clientHeight;
   }
 
-  infoPanel.scrollTop += scrollAmount;
+  panelScrollContent.scrollTop += scrollAmount;
 }, { capture: true, passive: false });
-
-window.addEventListener("resize", () => {
-  const infoPanel = document.getElementById("infoPanel");
-  if (infoPanel.classList.contains("open")) pinPanelNavigation(infoPanel);
-});

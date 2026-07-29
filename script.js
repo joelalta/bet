@@ -2230,6 +2230,10 @@ function updatePendingFocusTransition(now) {
 }
 
 //Input Events
+introPrompt.addEventListener("click", () => {
+  handleClick(null);
+});
+
 //Mouse Move
 window.addEventListener("mousemove", (event) => {
 
