@@ -2238,23 +2238,6 @@ function handleSceneTap(event) {
   mouse.y = -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1;
   raycaster.setFromCamera(mouse, camera);
 
-  if (
-    isMobileExperience() &&
-    currentFocus === Focus.BET &&
-    betRoot
-  ) {
-    const betHits = raycaster.intersectObject(betRoot, true);
-    if (betHits.length > 0) {
-      const firstBetComponent = COMPONENT_NAVIGATION[Focus.BET][0];
-      if (selectedComponent !== firstBetComponent.component) {
-        activateComponentNavigation(firstBetComponent);
-      } else {
-        openPanel(firstBetComponent.panel);
-      }
-      return;
-    }
-  }
-
   // Navigation back to BET
   if (currentFocus === Focus.LOCO) {
     const navHits = raycaster.intersectObjects(betNavigationMeshes, true);
@@ -2346,6 +2329,80 @@ document.addEventListener("chargingStageChanged", (event) => {
 document.addEventListener("componentNavigationRequested", (event) => {
   navigateSelectedComponent(event.detail.direction);
 });
+
+const MOBILE_SWIPE_MIN_DISTANCE_PX = 52;
+const MOBILE_SWIPE_DIRECTION_RATIO = 1.25;
+let mobileSwipeStart = null;
+
+function mobileComponentSwipeIsAvailable() {
+  return (
+    isMobileExperience() &&
+    currentFocus !== Focus.CHARGER &&
+    selectedComponent &&
+    document.getElementById("infoPanel").classList.contains("open") &&
+    (
+      applicationState === ApplicationState.COMPONENT_SELECTED ||
+      applicationState === ApplicationState.INSPECT_MODE
+    )
+  );
+}
+
+document.addEventListener("touchstart", (event) => {
+  if (!mobileComponentSwipeIsAvailable() || event.touches.length !== 1) {
+    mobileSwipeStart = null;
+    return;
+  }
+
+  const touch = event.touches[0];
+  mobileSwipeStart = {
+    identifier: touch.identifier,
+    clientX: touch.clientX,
+    clientY: touch.clientY,
+  };
+}, { passive: true, capture: true });
+
+document.addEventListener("touchmove", (event) => {
+  if (!mobileSwipeStart || event.touches.length !== 1) return;
+
+  const touch = event.touches[0];
+  if (touch.identifier !== mobileSwipeStart.identifier) return;
+
+  const deltaX = touch.clientX - mobileSwipeStart.clientX;
+  const deltaY = touch.clientY - mobileSwipeStart.clientY;
+
+  if (
+    Math.abs(deltaX) > 12 &&
+    Math.abs(deltaX) > Math.abs(deltaY) * MOBILE_SWIPE_DIRECTION_RATIO
+  ) {
+    event.preventDefault();
+  }
+}, { passive: false, capture: true });
+
+document.addEventListener("touchend", (event) => {
+  if (!mobileSwipeStart) return;
+
+  const touch = Array.from(event.changedTouches).find(
+    (changedTouch) => changedTouch.identifier === mobileSwipeStart.identifier
+  );
+  if (!touch) return;
+
+  const deltaX = touch.clientX - mobileSwipeStart.clientX;
+  const deltaY = touch.clientY - mobileSwipeStart.clientY;
+  mobileSwipeStart = null;
+
+  const isHorizontalSwipe =
+    Math.abs(deltaX) >= MOBILE_SWIPE_MIN_DISTANCE_PX &&
+    Math.abs(deltaX) > Math.abs(deltaY) * MOBILE_SWIPE_DIRECTION_RATIO;
+
+  if (!isHorizontalSwipe || !mobileComponentSwipeIsAvailable()) return;
+
+  // Swiping the content left advances; swiping right goes back.
+  navigateSelectedComponent(deltaX < 0 ? 1 : -1);
+}, { passive: true, capture: true });
+
+document.addEventListener("touchcancel", () => {
+  mobileSwipeStart = null;
+}, { passive: true, capture: true });
 
 document.addEventListener("keydown", (event) => {
   if (isMobileExperience()) return;

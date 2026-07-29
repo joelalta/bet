@@ -815,6 +815,13 @@ Mobile product viewer
 ----------------------------------------*/
 @media (max-width:768px), (pointer:coarse){
 
+    canvas,
+    #infoPanel{
+
+        touch-action:pan-y;
+
+    }
+
     #infoPanel{
 
         top:auto;
