@@ -86,6 +86,11 @@ function pinPanelNavigation(infoPanel) {
   const navigation = document.getElementById("panelNavigation");
   if (navigation.hidden) return;
 
+  if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) {
+    navigation.style.removeProperty("top");
+    return;
+  }
+
   navigation.style.top = `${
     infoPanel.scrollTop +
     infoPanel.clientHeight -

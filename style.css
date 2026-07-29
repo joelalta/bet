@@ -235,6 +235,13 @@ Section Toggle
 
 }
 
+#mobileSwipeHint{
+
+    display:none;
+    pointer-events:none;
+
+}
+
 /*----------------------------------------
 Information Panel
 ----------------------------------------*/
@@ -815,6 +822,52 @@ Mobile product viewer
 ----------------------------------------*/
 @media (max-width:768px), (pointer:coarse){
 
+    #mobileSwipeHint{
+
+        position:fixed;
+        top:28dvh;
+        left:50%;
+
+        display:flex;
+        align-items:center;
+        gap:10px;
+        padding:10px 16px;
+
+        border:1px solid rgba(0,0,0,.08);
+        border-radius:999px;
+        background:rgba(255,255,255,.94);
+        box-shadow:0 12px 32px rgba(0,0,0,.16);
+
+        color:var(--colour-text);
+        font:600 14px/1 var(--font-primary);
+
+        opacity:0;
+        transform:translate(-50%, 8px);
+        transition:
+            opacity 180ms ease,
+            transform 180ms ease;
+
+        z-index:120;
+
+    }
+
+    #mobileSwipeHint.is-visible{
+
+        opacity:1;
+        transform:translate(-50%, 0);
+
+    }
+
+    .mobileSwipeHintGesture{
+
+        display:inline-block;
+        color:#0059ff;
+        font-size:22px;
+        line-height:1;
+        animation:mobileSwipeHintGesture 650ms ease-in-out infinite alternate;
+
+    }
+
     canvas,
     #infoPanel{
 
@@ -911,9 +964,14 @@ Mobile product viewer
 
     #panelNavigation{
 
+        position:fixed;
+        top:auto !important;
+        bottom:12px;
         left:var(--space-3);
         right:var(--space-3);
         gap:12px;
+        transform:translateZ(0);
+        will-change:transform;
 
     }
 
@@ -970,6 +1028,28 @@ Mobile product viewer
 
         grid-column:3;
         grid-row:1;
+
+    }
+
+}
+
+@keyframes mobileSwipeHintGesture{
+
+    from{
+        transform:translateX(-5px);
+    }
+
+    to{
+        transform:translateX(5px);
+    }
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+    .mobileSwipeHintGesture{
+
+        animation:none;
 
     }
 

@@ -251,6 +251,25 @@ const chargerButton = document.getElementById("chargerButton");
 const introPrompt = document.getElementById("introPrompt");
 const introPromptText = document.getElementById("introPromptText");
 const introProgressBar = document.getElementById("introProgressBar");
+const mobileSwipeHint = document.getElementById("mobileSwipeHint");
+let mobileSwipeHintHasShown = false;
+let mobileSwipeHintTimer = null;
+
+function showMobileSwipeHintOnce() {
+    if (
+        !isMobileExperience() ||
+        currentFocus === Focus.CHARGER ||
+        mobileSwipeHintHasShown
+    ) return;
+
+    mobileSwipeHintHasShown = true;
+    window.clearTimeout(mobileSwipeHintTimer);
+    mobileSwipeHint.classList.add("is-visible");
+
+    mobileSwipeHintTimer = window.setTimeout(() => {
+        mobileSwipeHint.classList.remove("is-visible");
+    }, 1200);
+}
 
 //Inspection presentation
 let modelRoot = null;
@@ -1582,6 +1601,7 @@ function selectComponent(name) {
     applicationState = ApplicationState.COMPONENT_SELECTED;
     updateComponentNavigationPosition(name);
     lockComponentInteractions(previousComponent, name);
+    showMobileSwipeHintOnce();
 
 }
 
