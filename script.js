@@ -2218,8 +2218,10 @@ window.addEventListener("mousemove", (event) => {
 
 });
 
-//Mouse Click
-window.addEventListener("click", (event) => {
+const SCENE_TAP_MOVEMENT_THRESHOLD_PX = 14;
+let scenePointerDown = null;
+
+function handleSceneTap(event) {
   if (pendingFocusTransition || pendingFocusAfterInspectionExit) return;
   if (applicationState === ApplicationState.INSPECT_MODE) return;
 
@@ -2229,11 +2231,11 @@ window.addEventListener("click", (event) => {
     return;
   }
 
-  if (event.target.closest("#infoPanel, #focusToggle")) return;
   if (componentInteractionsAreLocked()) return;
 
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  const canvasBounds = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1;
+  mouse.y = -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1;
   raycaster.setFromCamera(mouse, camera);
 
   if (
@@ -2279,6 +2281,41 @@ window.addEventListener("click", (event) => {
       handleClick(componentName);
     }
   }
+}
+
+renderer.domElement.addEventListener("pointerdown", (event) => {
+  if (!event.isPrimary) return;
+
+  scenePointerDown = {
+    pointerId: event.pointerId,
+    clientX: event.clientX,
+    clientY: event.clientY,
+  };
+});
+
+renderer.domElement.addEventListener("pointercancel", (event) => {
+  if (scenePointerDown?.pointerId === event.pointerId) {
+    scenePointerDown = null;
+  }
+});
+
+renderer.domElement.addEventListener("pointerup", (event) => {
+  if (
+    !event.isPrimary ||
+    !scenePointerDown ||
+    scenePointerDown.pointerId !== event.pointerId
+  ) return;
+
+  const movement = Math.hypot(
+    event.clientX - scenePointerDown.clientX,
+    event.clientY - scenePointerDown.clientY
+  );
+  scenePointerDown = null;
+
+  if (movement > SCENE_TAP_MOVEMENT_THRESHOLD_PX) return;
+
+  event.preventDefault();
+  handleSceneTap(event);
 });
 
 document.addEventListener("panelClosed", () => {
