@@ -197,6 +197,18 @@ const PATHWAY_ICONS = {
   wheel: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="11" r="7"/><circle cx="12" cy="11" r="2"/><path d="M12 4v5M19 11h-5M12 18v-5M5 11h5M3 21h18"/></svg>`,
 };
 
+const INSPECTABLE_PANEL_COMPONENTS = new Set([
+  "airCompressor",
+  "battery",
+  "controlCabinet",
+  "cooling",
+  "dcac",
+  "dcdc",
+]);
+
+const REQUIRED_INSPECTION_SCROLL_PX = 640;
+const INSPECTION_WHEEL_STEP_PX = 120;
+
 function buildPathway(config) {
   const pathway = document.createElement("section");
   pathway.className = "systemPathway";
@@ -239,6 +251,12 @@ function installFinalPanelContent() {
     const relationship = panel.querySelector(".systemRelationship");
     if (relationship && PANEL_PATHWAYS[component]) {
       relationship.replaceWith(buildPathway(PANEL_PATHWAYS[component]));
+    }
+    if (INSPECTABLE_PANEL_COMPONENTS.has(component)) {
+      const runway = document.createElement("div");
+      runway.className = "inspectionScrollRunway";
+      runway.setAttribute("aria-hidden", "true");
+      panel.appendChild(runway);
     }
     panel.dataset.placeholderExpanded = "true";
   });
@@ -329,6 +347,67 @@ addPlaceholderContent();
 
 let lastChargingStage = null;
 let navigationUnlockTimer = null;
+let inspectionWheelTarget = null;
+let inspectionWheelAnimationFrame = null;
+let inspectionWheelLastFrameAt = null;
+
+function resetInspectionWheelAnimation() {
+  if (inspectionWheelAnimationFrame !== null) {
+    window.cancelAnimationFrame(inspectionWheelAnimationFrame);
+  }
+  inspectionWheelTarget = null;
+  inspectionWheelAnimationFrame = null;
+  inspectionWheelLastFrameAt = null;
+}
+
+function animateInspectionWheelScroll(panelScrollContent, now) {
+  if (inspectionWheelTarget === null) {
+    resetInspectionWheelAnimation();
+    return;
+  }
+
+  const elapsed = inspectionWheelLastFrameAt === null
+    ? 16
+    : Math.min(50, now - inspectionWheelLastFrameAt);
+  inspectionWheelLastFrameAt = now;
+
+  const remaining = inspectionWheelTarget - panelScrollContent.scrollTop;
+  const easingAmount = 1 - Math.exp(-elapsed / 75);
+
+  if (Math.abs(remaining) <= 0.5) {
+    panelScrollContent.scrollTop = inspectionWheelTarget;
+    resetInspectionWheelAnimation();
+    return;
+  }
+
+  panelScrollContent.scrollTop += remaining * easingAmount;
+  inspectionWheelAnimationFrame = window.requestAnimationFrame((nextNow) => {
+    animateInspectionWheelScroll(panelScrollContent, nextNow);
+  });
+}
+
+function addInspectionWheelStep(panelScrollContent, amount) {
+  const maximumScroll = Math.max(
+    0,
+    panelScrollContent.scrollHeight - panelScrollContent.clientHeight
+  );
+
+  if (inspectionWheelTarget === null) {
+    inspectionWheelTarget = panelScrollContent.scrollTop;
+  }
+
+  inspectionWheelTarget = Math.max(
+    0,
+    Math.min(maximumScroll, inspectionWheelTarget + amount)
+  );
+
+  if (inspectionWheelAnimationFrame === null) {
+    inspectionWheelLastFrameAt = null;
+    inspectionWheelAnimationFrame = window.requestAnimationFrame((now) => {
+      animateInspectionWheelScroll(panelScrollContent, now);
+    });
+  }
+}
 
 function dispatchChargingStage(infoPanel, force = false) {
   const stages = Array.from(
@@ -353,6 +432,33 @@ function dispatchChargingStage(infoPanel, force = false) {
   }));
 }
 
+function prepareInspectionScrollRange(component, panelScrollContent) {
+  document.querySelectorAll(".inspectionScrollRunway").forEach((runway) => {
+    runway.style.height = "0px";
+  });
+
+  if (
+    !INSPECTABLE_PANEL_COMPONENTS.has(component) ||
+    window.matchMedia("(max-width: 768px), (pointer: coarse)").matches
+  ) return;
+
+  const runway = document.querySelector(
+    `#${component}Panel .inspectionScrollRunway`
+  );
+  if (!runway) return;
+
+  const availableScroll = Math.max(
+    0,
+    panelScrollContent.scrollHeight - panelScrollContent.clientHeight
+  );
+  const missingScroll = Math.max(
+    0,
+    REQUIRED_INSPECTION_SCROLL_PX - availableScroll
+  );
+
+  runway.style.height = `${missingScroll}px`;
+}
+
 export function openPanel(component) {
   document.querySelectorAll(".componentPanel").forEach((panel) => {
     panel.classList.remove("active");
@@ -363,10 +469,12 @@ export function openPanel(component) {
 
   const infoPanel = document.getElementById("infoPanel");
   const panelScrollContent = document.getElementById("panelScrollContent");
+  resetInspectionWheelAnimation();
   panelScrollContent.scrollTop = 0;
   infoPanel.classList.add("open");
   infoPanel.focus({ preventScroll: true });
   document.getElementById("panelNavigation").hidden = component === "charger";
+  prepareInspectionScrollRange(component, panelScrollContent);
 
   if (component === "charger") {
     dispatchChargingStage(panelScrollContent, true);
@@ -437,12 +545,33 @@ document.addEventListener("wheel", (event) => {
   const infoPanel = document.getElementById("infoPanel");
   if (!infoPanel.classList.contains("open") || event.ctrlKey) return;
   const panelScrollContent = document.getElementById("panelScrollContent");
+  const activePanel = document.querySelector(".componentPanel.active");
+  const usesInspectionWheelSteps = Boolean(
+    activePanel?.querySelector(".inspectionScrollRunway")
+  ) && !window.matchMedia("(max-width: 768px), (pointer: coarse)").matches;
 
   event.preventDefault();
 
+  const isDiscreteInspectionWheel = usesInspectionWheelSteps && (
+    event.deltaMode === WheelEvent.DOM_DELTA_LINE ||
+    (event.deltaMode === WheelEvent.DOM_DELTA_PIXEL && Math.abs(event.deltaY) >= 40)
+  );
+
+  if (isDiscreteInspectionWheel) {
+    addInspectionWheelStep(
+      panelScrollContent,
+      Math.sign(event.deltaY) * INSPECTION_WHEEL_STEP_PX
+    );
+    return;
+  }
+
+  // Trackpads and scrollbar input remain directly coupled to the panel so
+  // their existing continuous inspection response is unchanged.
+  resetInspectionWheelAnimation();
+
   let scrollAmount = event.deltaY;
   if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
-    scrollAmount *= 18;
+    scrollAmount = event.deltaY * 18;
   } else if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
     scrollAmount *= panelScrollContent.clientHeight;
   }
