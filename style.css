@@ -710,6 +710,206 @@ Specifications
 
 }
 
+/*----------------------------------------
+System pathways
+----------------------------------------*/
+
+.systemPathway{
+
+    margin:var(--space-5) 0 var(--space-3);
+    padding:16px;
+
+    border:1px solid rgba(0,89,255,.12);
+    border-radius:16px;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.9), rgba(231,241,255,.82));
+    box-shadow:
+        0 12px 28px rgba(36,65,110,.08),
+        inset 0 1px 0 rgba(255,255,255,.9);
+
+}
+
+#infoPanel .systemPathwayLabel{
+
+    margin:0 0 12px;
+
+    color:#52657f;
+    font-size:11px;
+    letter-spacing:1.25px;
+
+}
+
+.systemPathwayTrack{
+
+    display:flex;
+    align-items:center;
+    width:100%;
+    min-width:0;
+
+}
+
+.systemPathwayNode{
+
+    display:flex;
+    flex:1 1 0;
+    min-width:0;
+    min-height:92px;
+    padding:12px 8px 10px;
+
+    align-items:center;
+    justify-content:flex-start;
+    flex-direction:column;
+    gap:8px;
+
+    border:1px solid rgba(55,78,112,.13);
+    border-radius:13px;
+    background:rgba(255,255,255,.8);
+    box-shadow:0 6px 18px rgba(43,67,104,.07);
+
+    text-align:center;
+
+}
+
+.systemPathwayNode.is-active{
+
+    border-color:rgba(0,89,255,.55);
+    background:linear-gradient(145deg, #1769ff, #0054e8);
+    box-shadow:
+        0 9px 22px rgba(0,89,255,.23),
+        inset 0 1px 0 rgba(255,255,255,.24);
+    color:#fff;
+
+}
+
+.systemPathwayIcon{
+
+    display:grid;
+    place-items:center;
+    width:32px;
+    height:32px;
+
+    border-radius:9px;
+    background:rgba(0,89,255,.09);
+    color:#075ce9;
+
+}
+
+.systemPathwayNode.is-active .systemPathwayIcon{
+
+    background:rgba(255,255,255,.17);
+    color:#fff;
+
+}
+
+.systemPathwayIcon svg{
+
+    width:20px;
+    height:20px;
+
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.7;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+
+}
+
+.systemPathwayName{
+
+    max-width:100%;
+
+    font-size:11px;
+    font-weight:600;
+    line-height:1.25;
+    overflow-wrap:anywhere;
+
+}
+
+.systemPathwayConnector{
+
+    position:relative;
+    flex:0 1 34px;
+    min-width:18px;
+    height:2px;
+
+    background:rgba(0,89,255,.24);
+    overflow:visible;
+
+}
+
+.systemPathwayConnector::after{
+
+    content:"";
+    position:absolute;
+    top:50%;
+    right:-1px;
+    width:7px;
+    height:7px;
+
+    border-top:2px solid rgba(0,89,255,.52);
+    border-right:2px solid rgba(0,89,255,.52);
+    transform:translateY(-50%) rotate(45deg);
+
+}
+
+.systemPathwayConnector.is-bidirectional::before{
+
+    content:"";
+    position:absolute;
+    top:50%;
+    left:-1px;
+    width:7px;
+    height:7px;
+
+    border-bottom:2px solid rgba(0,89,255,.52);
+    border-left:2px solid rgba(0,89,255,.52);
+    transform:translateY(-50%) rotate(45deg);
+
+}
+
+.systemPathwayPulse{
+
+    position:absolute;
+    top:50%;
+    left:0;
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+    background:#0764ff;
+    box-shadow:
+        0 0 0 3px rgba(0,89,255,.1),
+        0 0 10px rgba(0,89,255,.72);
+
+    transform:translate(-50%, -50%);
+    animation:systemPathwayFlow 2.3s cubic-bezier(.45,0,.55,1) infinite;
+
+}
+
+.systemPathwayConnector + .systemPathwayNode + .systemPathwayConnector .systemPathwayPulse{
+
+    animation-delay:.5s;
+
+}
+
+@keyframes systemPathwayFlow{
+
+    0%{
+        left:0;
+        opacity:0;
+    }
+
+    15%, 80%{
+        opacity:1;
+    }
+
+    100%{
+        left:100%;
+        opacity:0;
+    }
+
+}
+
 /* Compact desktop presentation for shorter laptop viewports. */
 @media (min-width:769px) and (max-height:800px){
 
@@ -786,6 +986,33 @@ Specifications
         padding:11px 0;
         gap:16px;
         font-size:14px;
+
+    }
+
+    .systemPathway{
+
+        margin-top:var(--space-3);
+        padding:12px 10px;
+
+    }
+
+    .systemPathwayNode{
+
+        min-height:80px;
+        padding:10px 5px 8px;
+
+    }
+
+    .systemPathwayConnector{
+
+        flex-basis:24px;
+        min-width:14px;
+
+    }
+
+    .systemPathwayName{
+
+        font-size:10px;
 
     }
 
@@ -1062,6 +1289,12 @@ Mobile product viewer
     .mobileSwipeHintGesture{
 
         animation:none;
+
+    }
+
+    .systemPathwayPulse{
+
+        display:none;
 
     }
 
